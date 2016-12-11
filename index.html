@@ -1,0 +1,43 @@
+<!DOCTYPE html> 
+<html data-ng-app="myApp">
+  <head>
+    <title>ngConf - Animations</title>
+    <link rel="stylesheet" type="text/css" href="assets/app.css" />
+	<!-- Include the core AngularJS library -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
+	
+	
+  </head>
+
+  <body ng-animate-children>
+    <div id="wrapper">
+      <nav id="header">
+        <div class="container navigation">
+          <h1 id="logo">Github-AngularJS</h1>
+          <a class="nav-item" href="#!/">Home</a>
+          <a class="nav-item" href="#!/gists">Gists</a>
+          <button ng-click="toggleAnimations()" class="disable-button">
+            <span ng-show="animationsDisabled">Enable</span>
+            <span ng-hide="animationsDisabled">Disable</span>
+            Animations
+          </button>
+        </div>
+      </nav>
+      <main id="body" ng-controller="StageCtrl">
+        <div ng-show="loadingRoute" class="loading-frame">
+          <i class="fa fa-spinner fa-spin loading-icon"></i>   
+        </div>
+        <div ng-view class="view-item"></div>
+      </main>
+    </div>
+	<!--<script src="assets/app.js"></script>-->
+    <script src="scripts/app.js"></script>
+	<script src="scripts/animations.js"></script>
+	<script src="scripts/base64.js"></script>
+	<script src="scripts/base64codec.js"></script>
+	<script src="scripts/gh-api.js"></script>
+	<script src="scripts/homePages.js"></script>
+  <body>
+</html>

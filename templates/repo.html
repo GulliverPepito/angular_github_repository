@@ -1,0 +1,56 @@
+<section class="content">
+  <main class="main-content">
+    <panel>
+      <h3 panel-trigger>About / README</h3>
+      <div panel-content>
+        <pre>
+          {{ readme }}
+        </pre>
+      </div>
+    </panel>
+
+    <panel>
+      <h3 panel-trigger>Commits</h3>
+      <div panel-content>
+        <div ng-repeat="com in commits | filter:q" class="commit-item listing-item">
+          <h4>{{ com.commit.message }}</h4>
+          <p>{{ com.sha }}</p>
+        </div>
+      </div>
+    </panel>
+
+    <panel>
+      <h3 panel-trigger>Issues / Pull-Requests</h3>
+      <div panel-content>
+        <div ng-repeat="item in issuesOrPullRequests(selected) | filter:q track by item.id" class="listing-item">
+          <h4>{{ item.title }}</h4>
+          <p>{{ item.user.login }}</p>
+        </div>
+      </div>
+    </panel>
+  </main>
+  <aside class="side-content">
+    <div class="repo-status">
+      <div ng-controller="CollaboratorsCtrl" class="panel">
+        <div class="row collab-nav">
+          <input type="search" ng-model="q" class="col-md-12 search-input" placeholder="Search Collabs..."/>
+        </div>
+        <div class="collab-avatars">
+          <img ng-repeat="collab in collaborators" ng-src="{{ collab.avatar_url }}" title="{{ collab.login }}" class="collab-avatar" ng-class="getClass(collab, q)" />
+        </div>
+      </div>
+      <div class="repo-status-count">
+        <strong class="count">{{ repo.watchers_count }}</strong>
+        Watchers
+      </div>
+      <div class="repo-status-count">
+        <strong class="count">{{ repo.open_issues_count }}</strong>
+        Open Issues
+      </div>
+      <div class="repo-status-count">
+        <strong class="count">{{ repo.forks_count }}</strong>
+        Forks
+      </div>
+    </div>
+  </aside>
+</section>
